@@ -17,9 +17,9 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <style>
+        {{-- <style>
             [x-cloak] { display: none !important; }
-        </style>
+        </style> --}}
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />

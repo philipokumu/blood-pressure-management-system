@@ -10,10 +10,8 @@ use Rappasoft\LaravelLivewireTables\Views\Filter;
 
 class UserTable extends DataTableComponent
 {
-
      public function columns(): array
     {
-        dd($this->showBulkActionsDropdown);
         return [
             Column::make('Name')
                 ->sortable()
@@ -32,28 +30,18 @@ class UserTable extends DataTableComponent
     public function filters(): array
     {
         return [
-            'role' => Filter::make('User Role')
+            'role' => Filter::make('role')
                 ->select([
                     '' => 'Any',
                     'admin' => 'admin',
                     'nurse' => 'nurse',
                     'doctor' => 'doctor',
-                    // User::ROLE_ADMIN => 'admin',
-                    // User::ROLE_NURSE => 'nurse',
-                    // User::ROLE_DOCTOR => 'doctor',
                 ]),
-            'date' => Filter::make('Date')
-                ->date([
-                    'min' => now()->subYear()->format('Y-m-d'), // Optional
-                    'max' => now()->format('Y-m-d') // Optional
-                ])
         ];
     }
 
     public function rowView(): string
     {
-        // Becomes /resources/views/location/to/my/row.blade.php
-        // return 'location.to.my.row.view';
         return 'livewire-tables.rows.user_table';
     }
 
