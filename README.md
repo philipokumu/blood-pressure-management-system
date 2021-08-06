@@ -3,7 +3,7 @@
 ### Clone the project from Git and cd into the project directory.
 
 <p>git clone https://github.com/philipokumu/blood-pressure-management-system.git</p>
-<p> cd blood-pressure-management-systemt</p>
+<p> cd blood-pressure-management-system</p>
 
 ### Install backend dependencies
 composer install
