@@ -1844,6 +1844,9 @@ select {
 .font-bold {
 	font-weight: 700;
 }
+.font-extrabold {
+	font-weight: 800;
+}
 .uppercase {
 	text-transform: uppercase;
 }
@@ -1958,6 +1961,10 @@ select {
 .text-gray-300 {
 	--tw-text-opacity: 1;
 	color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+.text-blue-700 {
+	--tw-text-opacity: 1;
+	color: rgba(29, 78, 216, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
