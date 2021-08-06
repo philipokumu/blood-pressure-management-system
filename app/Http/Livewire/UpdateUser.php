@@ -7,32 +7,30 @@ use Livewire\Component;
 
 class UpdateUser extends Component
 {
-    public $state = [
-        'id' => '',
-        'name' => '',
-        'role' => '',
-        'email' => '',
-    ];
+    public $user_id = '';
+    public $name = '';
+    public $role = '';
+    public $email = '';
 
     public function mount(User $user)
     {
-        $this->state['id'] = $user->id;
-        $this->state['name'] = $user->name;
-        $this->state['role'] = $user->role;
-        $this->state['email'] = $user->email;
+        $this->user_id = $user->id;
+        $this->name = $user->name;
+        $this->role = $user->role;
+        $this->email = $user->email; 
     }
 
     protected $rules = [
-        'state.name' => 'required|min:6',
+        'name' => 'required|min:6',
     ];
 
     public function update()
     {
         $this->validate();
 
-        $user = User::find($this->state['id']);
+        $user = User::find($this->user_id);
 
-        $user->update(['name'=> $this->state['name']]);
+        $user->update(['name'=> $this->name]);
 
         redirect(route('users.list'));
     }

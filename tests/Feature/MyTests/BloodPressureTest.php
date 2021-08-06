@@ -28,12 +28,10 @@ class BloodPressureTest extends TestCase
 
         Livewire::actingAs(User::factory()->create())
             ->test(CreateBloodPressure::class)
-            ->set('state', [
-                'blood_pressure' => $blood_pressure_record,
-                'patient_id' => $patient->id,
-                ])
-            ->call('create');
-            // ->assertRedirect(route('bloodPressure'));
+            ->set('blood_pressure', $blood_pressure_record)
+            ->set('patient_id', $patient->id)
+            ->call('create')
+            ->assertRedirect(route('pressures.list',$patient));
 
             $bloodPressure = BloodPressure::first();
             $this->assertNotNull($bloodPressure);
@@ -56,12 +54,10 @@ class BloodPressureTest extends TestCase
         $this->assertNotEquals($bloodPressureOldInfo->blood_pressure, $blood_pressure);
 
         Livewire::actingAs(User::factory()->create())
-            ->test(UpdateBloodPressure::class,['patient_id' => $patient->id,'blood_pressure'=>$bloodPressureOldInfo->blood_pressure])
-            ->set('state', [
-                'blood_pressure' => $blood_pressure,
-                ])
-            ->call('update',$patient->id,$bloodPressureOldInfo->id);
-            // ->assertRedirect(route('bloodPressures'));
+            ->test(UpdateBloodPressure::class,['patient' => $patient,'bloodPressure'=>$bloodPressureOldInfo])
+            ->set('blood_pressure', $blood_pressure)
+            ->call('update',$patient->id,$bloodPressureOldInfo->id)
+            ->assertRedirect(route('pressures.list',$patient));
 
             $bloodPressure = BloodPressure::first();
     
@@ -74,13 +70,10 @@ class BloodPressureTest extends TestCase
     {
 
         $patient = Patient::factory()->create();
-        $bloodPressures = BloodPressure::factory(2)->create(['patient_id'=>$patient->id]);
 
         Livewire::actingAs(User::factory()->create())
-            ->test(PatientBloodPressureList::class,['bloodPressures' => $bloodPressures])
+            ->test(PatientBloodPressureList::class,['patient' => $patient])
             ->assertOk();
-            // ->call('index');
-            // ->assertSee($patients);
     }
 
 
@@ -92,9 +85,8 @@ class BloodPressureTest extends TestCase
         $this->assertDatabaseCount('blood_pressures',1);
 
         Livewire::actingAs(User::factory()->create())
-            ->test(DeleteBloodPressure::class,['blood_pressure'=>$bloodPressure->id])
+            ->test(DeleteBloodPressure::class,['blood_pressure'=>$bloodPressure])
             ->call('destroy',$patient->id,$bloodPressure->id);
-            // ->assertRedirect(route('bloodPressure'));
 
             $bloodPressure = BloodPressure::first();
     

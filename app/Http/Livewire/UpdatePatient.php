@@ -22,7 +22,7 @@ class UpdatePatient extends Component
         $this->patient_id = $patient->id;
     }
 
-    public function update()
+    public function update() 
     {   
         $this->validate();
 

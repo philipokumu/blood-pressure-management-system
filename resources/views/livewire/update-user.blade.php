@@ -23,17 +23,17 @@
                                         </label>
                                             <input
                                                 name="name"
-                                                wire:model="state.name"
+                                                wire:model="name"
                                                 class="form-input bg-gray-200 border-gray-300 focus:border-indigo-400 focus:shadow-none focus:bg-white mt-1 block w-full"
                                                 type="text">
-                                        @error('name') <span >{{ $message }}</span> @enderror
+                                        @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                                         <label class="block">
                                             <span class="text-gray-700">Email</span>
                                         </label>
                                             <input
                                                 name="email"
                                                 readonly
-                                                wire:model="state.email"
+                                                wire:model="email"
                                                 class="form-input bg-gray-200 border-gray-300 focus:border-indigo-400 focus:shadow-none focus:bg-white mt-1 block w-full"
                                                 type="text">
                                         <label class="block">
@@ -42,7 +42,7 @@
                                             <input
                                             name="role"
                                             readonly
-                                            wire:model="state.role"
+                                            wire:model="role"
                                             class="form-input bg-gray-200 border-gray-300 focus:border-indigo-400 focus:shadow-none focus:bg-white mt-1 block w-full"
                                             type="text">
                                     </div>

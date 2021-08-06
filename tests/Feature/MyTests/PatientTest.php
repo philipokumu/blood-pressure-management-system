@@ -23,23 +23,20 @@ class PatientTest extends TestCase
         $this->assertDatabaseCount('patients',0);
 
         $name = 'foo bar';
-        $patient_number = 56;
+        $patient_number = '#000001';
 
-        Livewire::actingAs(User::factory()->create())
+        $response = Livewire::actingAs(User::factory()->create())
             ->test(CreatePatient::class)
-            ->set('state', [
-                'name' => $name,
-                'patient_number' => $patient_number,
-                ])
-            ->call('create')
-            ->assertRedirect(route('patients'));
+            ->set('name', $name)
+            ->call('create');
 
-            $patient = Patient::first();
-            $nameFromDb = $patient->name;
-            $patientNumberFromDb = $patient->patient_number;
-    
-            $this->assertEquals($name, $nameFromDb);
-            $this->assertEquals($patient_number, $patientNumberFromDb);
+        $patient = Patient::first();
+        $response->assertRedirect(route('patients.edit',$patient));
+
+        $patient = Patient::first();
+
+        $this->assertEquals($name, $patient->name);
+        $this->assertEquals($patient_number, $patient->patient_number);
 
         $this->assertDatabaseCount('patients',1);
         
@@ -53,12 +50,10 @@ class PatientTest extends TestCase
         $newName = 'George';
 
         Livewire::actingAs(User::factory()->create())
-            ->test(UpdatePatient::class,['id' => $patientOldInfo->id])
-            ->set('state', [
-                'name' => $newName,
-                ])
+            ->test(UpdatePatient::class,['patient' => $patientOldInfo])
+            ->set('name', $newName)
             ->call('update',$patientOldInfo->id)
-            ->assertRedirect(route('patients'));
+            ->assertRedirect(route('patients.list'));
 
             $patient = Patient::first();
             $nameFromDb = $patient->name;
@@ -75,8 +70,7 @@ class PatientTest extends TestCase
         $patients = Patient::factory(2)->create();
 
         Livewire::actingAs(User::factory()->create())
-            ->test(AllPatients::class,['patients' => $patients])
-            // ->call('index')
+            ->test(AllPatients::class)
             ->assertStatus(200);
     }
 

@@ -26,17 +26,15 @@ class UserTest extends TestCase
         $password = 'password';
         $role = 'nurse';
 
-        $response = Livewire::actingAs($superAdmin = User::factory()->create())
+        Livewire::actingAs($superAdmin = User::factory()->create())
             ->test(CreateUser::class)
-            ->set('state', [
-                'name' => $name,
-                'email' => $email,
-                'password' => $password,
-                'password_confirmation' => $password,
-                'role' => $role,
-                ])
-            ->call('create');
-            // ->assertStatus(201);
+            ->set('name', $name)
+            ->set('email', $email)
+            ->set('password', $password)
+            ->set('password_confirmation', $password)
+            ->set('role', $role)
+            ->call('create')
+            ->assertRedirect(route('users.list'));
 
             $user = User::where('id','!=',$superAdmin->id)->first();
 
@@ -56,12 +54,10 @@ class UserTest extends TestCase
         $newName = 'George';
 
         Livewire::actingAs(User::factory()->create())
-            ->test(UpdateUser::class,['id' => $userOldInfo->id])
-            ->set('state', [
-                'name' => $newName,
-                ])
-            ->call('update',$userOldInfo->id);
-            // ->assertRedirect(route('patients'));
+            ->test(UpdateUser::class,['user' => $userOldInfo])
+            ->set('name', $newName)
+            ->call('update',$userOldInfo->id)
+            ->assertRedirect(route('users.list'));
 
             $user = User::first();
     
@@ -76,8 +72,7 @@ class UserTest extends TestCase
         $users = User::factory(2)->create();
 
         Livewire::actingAs(User::factory()->create())
-            ->test(AllUsers::class,['users' => $users])
-            // ->call('index')
+            ->test(AllUsers::class)
             ->assertStatus(200);
     }
 }
