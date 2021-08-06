@@ -20,7 +20,7 @@
         <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     </head>
-    <body class="font-sans antialiased overflow-hidden">
+    <body class="font-sans antialiased">
 
 
         <div class="flex flex-col md:flex-row min-h-screen overflow-hidden">
