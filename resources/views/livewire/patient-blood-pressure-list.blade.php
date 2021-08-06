@@ -1,10 +1,13 @@
 <div>
     <x-slot name="header">
         <div class="flex md:justify-between flex-col md:flex-row">
-            <div class="flex items-center">
+            <div>
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ __('Blood pressure records for patient') }} {{$state['patient_number']}}
                 </h2>
+                <h3>
+                    {{ __('Click record to adjust blood pressure') }}
+                </h3>
             </div>
             <div class="mt-4 flex flex-col md:flex-row">
                 <a href="{{route('pressures.export',$state['patient_id'])}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4 w-36">
