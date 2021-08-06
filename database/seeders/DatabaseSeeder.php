@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(35)->create(['role'=>'nurse']);
         \App\Models\User::factory(35)->create(['role'=>'doctor']);
 
-        \App\Models\Patient::factory(10)
+        \App\Models\Patient::factory(1000)
         ->hasBloodPressures(1)
         ->create();
     }
