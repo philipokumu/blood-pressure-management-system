@@ -7,7 +7,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     @if (Route::current()->getName() != 'patients.list')
                     <a href="{{ url()->previous() }}">
-                        <p class="text-blue-700 font-extrabold text-2xl">Go back</p>
+                        <p class="text-blue-700 font-extrabold text-2xl">Go back to previous page</p>
                     </a>
                     @endif
                 </div>
