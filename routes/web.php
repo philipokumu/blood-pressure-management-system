@@ -31,6 +31,10 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
+Route::match(['get', 'post'], 'register', function(){
+    return redirect('/');
+    });
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/patients', AllPatients::class)->name('patients.list');
     Route::get('/patients/create', CreatePatient::class)->name('patients.create');
