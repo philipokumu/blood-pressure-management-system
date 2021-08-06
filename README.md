@@ -7,7 +7,7 @@ cd blood-pressure-management-system
 Install backend dependencies
 
 composer install
-Install frontend dependencies
+<p>Install frontend dependencies</p>
 
 npm install
 Create a database and set the environment variables in .env file.
