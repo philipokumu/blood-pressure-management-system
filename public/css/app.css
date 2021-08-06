@@ -1078,6 +1078,9 @@ select {
 .relative {
 	position: relative;
 }
+.sticky {
+	position: sticky;
+}
 .inset-0 {
 	top: 0px;
 	right: 0px;
@@ -1485,6 +1488,13 @@ select {
 }
 .overflow-y-hidden {
 	overflow-y: hidden;
+}
+.overflow-y-scroll {
+	overflow-y: scroll;
+}
+.overscroll-none {
+	-ms-scroll-chaining: none;
+	    overscroll-behavior: none;
 }
 .overscroll-y-auto {
 	overscroll-behavior-y: auto;

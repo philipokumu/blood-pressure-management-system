@@ -20,31 +20,33 @@
         <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased over">
 
 
-        <div class="flex flex-col md:flex-row min-h-screen overflow-hidden">
-            <div>
+        <div class="flex flex-col md:flex-row min-h-screen">
+            <div class="sticky top-0">
                 @include('includes.sidebar')
             </div>
 
-            <div class="flex-1 flex">
-                <div class="flex-1 overscroll-y-auto">
+            <div class="flex-1 flex overflow-y-auto">
+                <div class="flex-1 overflow-y-auto">
+                   <div class="overflow-y-auto">
                     @livewire('navigation-menu')
 
-                <!-- Page Heading -->
-                @if (isset($header))
-                    <header class="bg-white shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif
-
-                <!-- Page Content -->
-                <main>
-                    {{ $slot }}
-                </main>
+                    <!-- Page Heading -->
+                    @if (isset($header))
+                        <header class="bg-white shadow">
+                            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                                {{ $header }}
+                            </div>
+                        </header>
+                    @endif
+    
+                    <!-- Page Content -->
+                    <main>
+                        {{ $slot }}
+                    </main>
+                   </div>
                 </div>
             </div>
         </div>
