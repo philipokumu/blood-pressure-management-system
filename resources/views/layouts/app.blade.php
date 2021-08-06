@@ -17,38 +17,35 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        {{-- <style>
-            [x-cloak] { display: none !important; }
-        </style> --}}
+        <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <body class="font-sans antialiased overflow-hidden">
 
-        <div class="flex min-h-screen">
-            <div class="w-1/6 bg-gray-800">
-                <!-- Sidebar content -->
+
+        <div class="flex flex-col md:flex-row min-h-screen overflow-hidden">
+            <div>
                 @include('includes.sidebar')
             </div>
-            <div class="bg-gray-100 flex-1">
-                {{-- <div class="overflow-y-scroll"> --}}
-                {{-- <div class="min-h-screen bg-gray-100"> --}}
-                    {{-- <div class="sticky top-0> --}}
-                        @livewire('navigation-menu')
-                    
-                    @if (isset($header))
+
+            <div class="flex-1 flex">
+                <div class="flex-1 overscroll-y-auto">
+                    @livewire('navigation-menu')
+
+                <!-- Page Heading -->
+                @if (isset($header))
                     <header class="bg-white shadow">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>
                     </header>
-                    @endif
-                    {{-- </div> --}}
-                    
+                @endif
+
                 <!-- Page Content -->
                 <main>
                     {{ $slot }}
                 </main>
-               {{-- </div> --}}
+                </div>
             </div>
         </div>
 

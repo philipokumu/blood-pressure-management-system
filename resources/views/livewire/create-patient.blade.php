@@ -10,17 +10,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="bg-white p-6 rounded shadow mt-4">
-                    <div class="mt-4">
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="sm:w-1/4 mb-6">
-                                    <h2 class="text-xl">Patient</h2>
-                                </div>
-                                <div class="sm:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex flex-col">
+                                <div class="sm:w-3/4 grid grid-cols-1 gap-6">
                                     <label class="block">
                                         <span class="text-gray-700">Name</span>
                                     </label>
                                         <input
                                             wire:model="name"
+                                            placeholder="John Doe..."
                                             class="form-input bg-gray-200 border-gray-300 focus:border-indigo-400 focus:shadow-none focus:bg-white mt-1 block w-full"
                                             type="text">
                                     @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
@@ -33,7 +30,6 @@
                                 </div>
                             </div>
                         </div>
-                </div>
             </div>
         </div>
     </div>

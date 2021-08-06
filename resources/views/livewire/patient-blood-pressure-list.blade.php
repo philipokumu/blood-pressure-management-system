@@ -1,18 +1,16 @@
 <div>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <div>
+        <div class="flex md:justify-between flex-col md:flex-row">
+            <div class="flex items-center">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ __('Blood pressure records for patient') }} {{$state['patient_number']}}
                 </h2>
             </div>
-            @if(auth()->user()->role!='nurse')
-            <div class="mt-4">
-                <a href="{{route('pressures.export',$state['patient_id'])}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4">
-                    Download blood pressure list
+            <div class="mt-4 flex flex-col md:flex-row">
+                <a href="{{route('pressures.export',$state['patient_id'])}}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4 w-36">
+                    Download list
                 </a>
             </div>
-            @endif
         </div>
     </x-slot>
 

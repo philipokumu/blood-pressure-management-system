@@ -1,4 +1,3 @@
-{{-- <x-app-layout> --}}
     <div>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -10,14 +9,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="bg-white p-6 rounded shadow mt-4">
-                        <div class="mt-4">
                             <form wire:submit.prevent="update" method="POST">
-                                @csrf
-                                <div class="flex flex-col sm:flex-row">
-                                    <div class="sm:w-1/4 mb-6">
-                                        <h2 class="text-xl">Account details</h2>
-                                    </div>
-                                    <div class="sm:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="flex flex-col">
+                                    <div class="sm:w-3/4 grid grid-cols-1 gap-6">
                                         <label class="block">
                                             <span class="text-gray-700">Name</span>
                                         </label>
@@ -53,10 +47,7 @@
                                     </div>
                             </form>
                             </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-{{-- </x-app-layout> --}}

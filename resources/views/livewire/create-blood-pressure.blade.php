@@ -11,8 +11,8 @@
                 <div class="bg-white p-6 rounded shadow mt-4">
                     <div class="mt-4">
                         <form wire:submit.prevent="create" method="POST">
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="sm:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex flex-col">
+                                <div class="sm:w-3/4 grid grid-cols-1 gap-6">
                                     <label class="block">
                                         <span class="text-gray-700">Blood pressure <b>(mm Hg)</b></span>
                                     </label>
