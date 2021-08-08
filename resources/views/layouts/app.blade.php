@@ -20,17 +20,18 @@
         <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     </head>
-    <body class="font-sans antialiased over">
+    <body class="font-sans antialiased">
 
-
-        <div class="flex flex-col md:flex-row min-h-screen">
-            <div class="sticky top-0">
+        <div class="h-screen flex flex-col md:flex-row">
+            <!-- Fixed sidebar -->
+            <div class="md:w-64 sm:w-full">
                 @include('includes.sidebar')
             </div>
-
-            <div class="flex-1 flex overflow-y-auto">
-                <div class="flex-1 overflow-y-auto">
-                   <div class="overflow-y-auto">
+            <!-- Scroll wrapper -->
+            <div class="flex-1 flex bg-gray-100 overflow-hidden">
+                <!-- Scrollable container -->
+                <div class="px-6 py-4 flex-1 overflow-y-scroll">
+                    <!-- Your content -->
                     @livewire('navigation-menu')
 
                     <!-- Page Heading -->
@@ -46,7 +47,6 @@
                     <main>
                         {{ $slot }}
                     </main>
-                   </div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
-<aside class="w-full md:w-64 bg-gray-800 md:min-h-screen px-4" x-data="{ isOpen: true }">
+<aside class="w-full md:w-64 bg-gray-800 md:min-h-screen px-4" x-data="{ open: true }">
     <div class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex md:hidden">
-            <button type="button" @click="isOpen = !isOpen"
+            <button type="button" @click="open = !open"
                     class="text-gray-300 hover:text-gray-500 focus:outline-none focus:text-gray-500">
                 <svg class="fill-current w-8" fill="none" stroke-linecap="round" stroke-linejoin="round"
                      stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,7 +18,7 @@
         </a>
 
     </div>
-    <div class="px-2 py-6 md:block" :class="isOpen? 'block': 'hidden'" >
+    <div class="px-2 py-6 md:block" :class="open? 'block': 'hidden'" >
         <ul>
             <li class="px-2 py-3 hover:bg-gray-900 rounded bg-gray-500">
                 <a href="{{route('patients.list')}}" class="flex items-center" :active="request()->routeIs('patients.list')">
