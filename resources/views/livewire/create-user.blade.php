@@ -47,7 +47,7 @@
                                 </label>
                                     <input
                                     type="password"
-                                    wire:model="state.password"
+                                    wire:model="password"
                                     class="form-input bg-gray-200 border-gray-300 focus:border-indigo-400 focus:shadow-none focus:bg-white mt-1 block w-full"
                                     type="text">
                                 @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
@@ -56,7 +56,7 @@
                                 </label>
                                     <input
                                     type="password"
-                                    wire:model="state.password_confirmation"
+                                    wire:model="password_confirmation"
                                     class="form-input bg-gray-200 border-gray-300 focus:border-indigo-400 focus:shadow-none focus:bg-white mt-1 block w-full"
                                     type="text">
                                 @error('password_confirmation') <span class="text-red-500">{{ $message }}</span> @enderror
